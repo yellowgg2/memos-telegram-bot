@@ -25,6 +25,6 @@ Telegram bot for [memos](https://github.com/usememos/memos)
 
 > docker, docker-compose는 기본적으로 설치하셔야 합니다.
 
-- `git clone https://github.com/yellowgg2/memos.git`
+- `git clone https://github.com/yellowgg2/memos-telegram-bot`
 - `.env` 파일의 값을 본인에 맞게 설정
 - `docker-compose up -d --build` 실행

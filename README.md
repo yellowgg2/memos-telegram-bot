@@ -26,6 +26,6 @@ To easily use [memos](https://github.com/usememos/memos) app.
 # Installation
 
 - Create a bot for memos from [Bot Father](https://t.me/botfather) and get a token
-- Clone with `git clone https://github.com/yellowgg2/memos.git`
+- Clone with `git clone https://github.com/yellowgg2/memos-telegram-bot`
 - Fill out your `.env` file
 - Run `docker-compose up -d --build`
