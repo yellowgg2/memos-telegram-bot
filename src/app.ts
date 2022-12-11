@@ -1,3 +1,5 @@
+require("custom-env").env();
+
 if (process.env.NODE_ENV === "development") {
   require("custom-env").env("dev");
 }
