@@ -12,6 +12,12 @@ function checkEnvs() {
     return;
   }
   console.error("There are missing env variable. check the .env file");
+  console.log("==================");
+  console.log(process.env.ADMIN_TELEGRAM_USERNAME);
+  console.log(process.env.BOT_API_TOKEN);
+  console.log(process.env.MEMO_URL);
+  console.log(process.env.OPEN_API_TOKEN);
+  console.log("==================");
   process.exit(1);
 }
 
