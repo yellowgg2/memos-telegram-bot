@@ -1,0 +1,37 @@
+{
+  "name": "memos-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "author": "Youngki Kang",
+  "license": "MIT",
+  "scripts": {
+    "init": "tsc --init",
+    "test": "jest",
+    "cleantest": "npm run test:clean",
+    "test:clean": "jest --clearCache",
+    "debug": "tsc --sourcemap",
+    "build": "tsc",
+    "start": "cross-env NODE_ENV=production ts-node src/app.ts",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --respawn src/app.ts"
+  },
+  "dependencies": {
+    "axios": "^1.2.1",
+    "custom-env": "^2.0.1",
+    "dotenv": "^16.0.3",
+    "node-telegram-bot-api": "^0.60.0",
+    "node-telegram-keyboard-wrapper": "^3.1.0",
+    "sqlite3": "^5.1.2",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.57.6",
+    "@types/sqlite3": "^3.1.8",
+    "@types/winston": "^2.4.4",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
