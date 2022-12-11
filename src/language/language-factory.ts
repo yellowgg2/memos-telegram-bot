@@ -1,8 +1,6 @@
 import EnglishBot from "./english";
 import KoreanBot from "./korean";
 
-require("dotenv").config();
-
 export interface ILanguageBot {
   showHelp: string;
   showAdminHelp: string;

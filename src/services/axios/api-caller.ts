@@ -1,6 +1,5 @@
 import axios from "axios";
 import { glog } from "../logger/custom-logger";
-require("dotenv").config();
 
 export default class ApiCaller {
   private static instance: ApiCaller;
