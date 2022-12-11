@@ -23,7 +23,7 @@ To easily use [memos](https://github.com/usememos/memos) app.
 | `PUID`                    | host UID (get it with `id -u` from host)                                                                          | 1000                      |
 | `PGID`                    | host GID (get it with `id -g` from host)                                                                          | 1000                      |
 
-# 설치
+# Installation
 
 - Create a bot for memos from [Bot Father](https://t.me/botfather) and get a token
 - Clone with `git clone https://github.com/yellowgg2/memos.git`
