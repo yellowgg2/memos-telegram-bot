@@ -4,7 +4,6 @@
 !download/README.md
 .vscode/
 logs/
-db/
 *.db
 .env.dev
 ### Node ###
