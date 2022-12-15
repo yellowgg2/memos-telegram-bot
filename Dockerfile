@@ -18,11 +18,11 @@ WORKDIR /bot
 
 COPY . .
 
-RUN npm i
-
 RUN chmod +x /bot/entry-point.sh
 RUN chown -R $UNAME:$UNAME /bot
 RUN ls -la
 USER $UNAME
+
+RUN npm i
 
 CMD ["/bot/entry-point.sh"]
