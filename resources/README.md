@@ -1,0 +1,1 @@
+downloaded resource path

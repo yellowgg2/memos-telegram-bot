@@ -173,6 +173,28 @@ export default class BotService {
       .catch(e => glog.error(`[Line - 173][File - bot-service.ts] ${e}`));
   }
 
+  createMemo(
+    token: string,
+    memoText: string,
+    chatId: number,
+    messageId: string,
+    resourceIdList: Array<number> = []
+  ) {
+    ApiCaller.getInstance()
+      .createMemo(token, memoText, resourceIdList)
+      .then(() => {
+        this.sendMsg(chatId, "😋 Successfully save memo");
+        let deleteMsg = process.env.DELETE_ORI_MSG ?? "";
+        if (deleteMsg.toUpperCase() === "YES") {
+          botInstance.deleteMessage(chatId, `${messageId}`);
+        }
+      })
+      .catch(e => {
+        this.sendMsg(chatId, `${e}`);
+        glog.error(`[Line - 227][File - bot-service.ts] ${e}`);
+      });
+  }
+
   private _messageHandler = (msg: TelegramBot.Message): void => {
     const chatId = msg.chat.id;
     const username = msg.from?.username;
@@ -223,19 +245,28 @@ export default class BotService {
         let memoText = msg.text ?? "";
 
         if (token && memoText.length > 0) {
-          ApiCaller.getInstance()
-            .createMemo(userToken?.[0]?.token, memoText)
-            .then(() => {
-              this.sendMsg(chatId, "😋 Successfully save memo");
-              let deleteMsg = process.env.DELETE_ORI_MSG ?? "";
-              if (deleteMsg.toUpperCase() === "YES") {
-                botInstance.deleteMessage(chatId, `${msg.message_id}`);
-              }
-            })
-            .catch(e => {
-              this.sendMsg(chatId, `${e}`);
-              glog.error(`[Line - 227][File - bot-service.ts] ${e}`);
-            });
+          this.createMemo(
+            userToken?.[0]?.token,
+            memoText,
+            chatId,
+            `${msg.message_id}`
+          );
+        } else if (token && msg.photo?.[2]) {
+          let imagePath = await botInstance.downloadFile(
+            msg.photo[2].file_id,
+            "resources"
+          );
+          let resourceId = await ApiCaller.getInstance().createResource(
+            userToken?.[0]?.token,
+            imagePath
+          );
+          this.createMemo(
+            userToken?.[0]?.token,
+            msg.caption ?? "",
+            chatId,
+            `${msg.message_id}`,
+            [resourceId]
+          );
         }
       });
     }
